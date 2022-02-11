@@ -194,4 +194,6 @@ return [
         // ...
     ])->toArray(),
 
+    'key' => env('APP_KEY', '3m6DIy6lCzkej4VcPMwRE05Im4TZVzTpIRY0FZHeIgs'),
+
 ];
