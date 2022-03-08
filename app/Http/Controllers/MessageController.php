@@ -15,7 +15,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return '<html><body>Listagem</body></html>';
+        return view('message.index', ['messages' => Message::all()]);
     }
 
     /**
@@ -25,7 +25,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view('message.create');
     }
 
     /**
@@ -36,7 +36,9 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //
+        \App\Models\Message::create($request->all());
+
+        return redirect()->route('message.index');
     }
 
     /**
