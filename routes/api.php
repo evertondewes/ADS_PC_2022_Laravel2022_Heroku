@@ -16,7 +16,7 @@ use App\Models\Message;
 */
 
 Route::get('/message', function (Request $request) {
-    return response()->json(Message::all(), 200);
+     return response()->json(Message::all(), 200);
 });
 
 
