@@ -58,10 +58,10 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Message $message)
-    {
-        //
-    }
+public function edit(Message $message)
+{
+    return view('message.edit', array('message' => $message));
+}
 
     /**
      * Update the specified resource in storage.
@@ -72,7 +72,8 @@ class MessageController extends Controller
      */
     public function update(UpdateMessageRequest $request, Message $message)
     {
-        //
+        $message->update($request->all());
+        return $this->index();
     }
 
     /**
@@ -81,12 +82,12 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
-    {
-        //
-    }
+public function destroy(Message $message)
+{
+    $message->delete();
 
-    public function embaralharMensagem(int $id) {
-        return '<html><body>Embaralhando a mensagem ' . $id  .'</body></html>';
-    }
+    return redirect()->route('message.index');
+    //return $this->index();
+    //obs: este comando apresenta a tela index porém não altera a URL
+}
 }
